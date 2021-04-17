@@ -5,7 +5,8 @@ function getValidation($number)
     if (!is_numeric($number)) {
          return false;
     }else{
-         return true;
+        if ($number<10 || $number > 99) {return false;}else{
+         return true;}
     }
 
 }
@@ -52,4 +53,10 @@ function count_assumption() {
     echo "Это была " . $_SESSION["attempt"]++ . "-я попытка экстрасенсов<br/>";
     echo "<br><a href=" . $_SERVER['PHP_SELF'] . ">Попробовать еще раз</a><br/><br/>";
 }
+function getReset() {
+    session_destroy();
+    echo "Сессия сброшена";
+    echo "<meta  http-equiv='Refresh' content='1; url=/index.php'";
+}
 ?>
+
