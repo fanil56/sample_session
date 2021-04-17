@@ -51,7 +51,7 @@ function add_hist ($param,$value) {
 function count_assumption() {
     if (!isset($_SESSION['attempt'])) $_SESSION['attempt'] = 1;
     echo "Это была " . $_SESSION["attempt"]++ . "-я попытка экстрасенсов<br/>";
-    echo "<br><a href=" . $_SERVER['PHP_SELF'] . ">Попробовать еще раз</a><br/><br/>";
+    echo "<br><a href='/index.php'>Попробовать еще раз</a><br/><br/>";
 }
 function getReset() {
     session_destroy();

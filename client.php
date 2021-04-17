@@ -4,10 +4,12 @@ include ("header.tpl");
 require "support.php";
 
 if (!isset($_SESSION['sharl'])) $_SESSION['sharl']=array_fill(1, 3, 0); //создание массива истории попыток экстрасенсов
+//Проверка на отсутствие введенного значения пользователя и вывод попыток экстрасенсов
 if (!isset($_POST['number'])) {
     include ("formnumber.tpl");
     show_assumption();
 }else {
+//проверяем введенные данные
     if (getValidation($_POST['number'])) {
         if (!isset($_SESSION['prav'])) $_SESSION['prav'] = array_fill(1, 3, 0);//создание массива с количеством правильных попыток каждого экстрасенса
         if (!isset($_SESSION['dostovern'])) $_SESSION['dostovern'] = array_fill(1, 3, 0);//создание массива с достоверностью каждого экстрасенса (можно обойтись и расчитывать значение каждый раз при обращении)
@@ -23,7 +25,10 @@ if (!isset($_POST['number'])) {
         echo "<br><a href=" . $_SERVER['PHP_SELF'] . ">Попробовать снова</a><br/><br/>";
     }
 }
-if (isset($_POST['reset_ses']) && $_POST['reset_ses']==1) getReset();
+if (isset($_POST['reset_ses']) && $_POST['reset_ses']==1) {getReset();}else{
+//Выводим кнопку при каком-либо введенном значении.
+    if (isset($_POST['number'])) include ("reset.tpl");
+}
 include ("footer.tpl");
 
 
