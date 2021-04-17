@@ -41,10 +41,12 @@ function show_hist($hist) {
         echo $hist[$is] . "<br/>";
     }
 }
+//функция добавления значений в историю
 function add_hist ($param,$value) {
     if (!isset($_SESSION[$param])) $_SESSION[$param] = array();
     array_push($_SESSION[$param], $value);
 }
+//функция подсчета попыток экстрасенсов
 function count_assumption() {
     if (!isset($_SESSION['attempt'])) $_SESSION['attempt'] = 1;
     echo "Это была " . $_SESSION["attempt"]++ . "-я попытка экстрасенсов<br/>";
